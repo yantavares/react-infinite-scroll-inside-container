@@ -3,12 +3,12 @@ import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
-  const [items, setItems] = useState(Array.from({ length: 20 }));
+  const [items, setItems] = useState(Array.from({ length: 10 }));
 
   const fetchData = () => {
     setTimeout(() => {
       setItems(items.concat(Array.from({ length: 10 })));
-    }, 2000);
+    }, 1000);
   };
 
   return (
