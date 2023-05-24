@@ -1,18 +1,34 @@
 import "./App.css";
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
 
 function App() {
+  const [items, setItems] = useState(Array.from({ length: 20 }));
+
+  const fetchData = () => {
+    setTimeout(() => {
+      setItems(items.concat(Array.from({ length: 10 })));
+    }, 2000);
+  };
+
   return (
     <div className="app">
-      <div className="container">
-        <div className="box">1</div>
-        <div className="box">2</div>
-        <div className="box">3</div>
-        <div className="box">4</div>
-        <div className="box">5</div>
-        <div className="box">6</div>
-        <div className="box">7</div>
-        <div className="box">8</div>
-        <div className="box">9</div>
+      <div id="container">
+        <InfiniteScroll
+          dataLength={items.length}
+          next={fetchData}
+          hasMore={items.length < 100}
+          loader={<h4 style={{ margin: 0, padding: 0 }}>Loading...</h4>}
+          scrollableTarget="container"
+          className="scroll"
+          scrollThreshold={1}
+        >
+          {items.map((i, index) => (
+            <div className="box" key={index}>
+              {index}
+            </div>
+          ))}
+        </InfiniteScroll>
       </div>
     </div>
   );
