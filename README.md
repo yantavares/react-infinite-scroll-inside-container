@@ -1,3 +1,7 @@
+# About
+
+Example of infinite scroll using React.js and react-infinite-scroll-component inside a fixed container.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
